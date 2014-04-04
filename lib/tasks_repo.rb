@@ -12,4 +12,8 @@ class TasksRepo
   def all
     @all_tasks.to_a
   end
+
+  def modify(id, updated_task)
+    @all_tasks.where(:id => id).update(updated_task)
+  end
 end

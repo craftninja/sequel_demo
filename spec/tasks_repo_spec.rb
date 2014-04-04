@@ -14,15 +14,20 @@ describe TasksRepo do
   end
 
   it "can create tasks" do
-
     description = "Do #{rand(2..20)} stuff"
     @tasks_repo.create(description: description)
-    tasks = @tasks_repo.all
-    expect(tasks).to eq(
-      [
-        {id: 1, description: description, completed: false}
-      ]
-    )
+    actual = @tasks_repo.all
+    expected = [{id: 1, description: description, completed: false}]
+    expect(actual).to eq(expected)
+  end
 
+  it "can update a task" do
+    @tasks_repo.create(description: "Get some red silk")
+    update = {:description => "Get some red velvet", :completed => true}
+    @tasks_repo.modify(1, update)
+    actual = @tasks_repo.all
+    update[:id] = 1
+    expected = [update]
+    expect(actual).to eq(expected)
   end
 end
