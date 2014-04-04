@@ -16,4 +16,8 @@ class TasksRepo
   def modify(id, updated_task)
     @all_tasks.where(:id => id).update(updated_task)
   end
+
+  def remove(id)
+    @all_tasks.where(:id => id).delete
+  end
 end
