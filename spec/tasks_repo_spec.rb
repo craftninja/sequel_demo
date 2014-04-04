@@ -38,4 +38,12 @@ describe TasksRepo do
     expected = [{:id => 2, :description => "Draft Ruby pattern", :completed => false}]
     expect(actual).to eq(expected)
   end
+
+  it "can find a task by id" do
+    @tasks_repo.create(description: "Get some red velvet")
+    @tasks_repo.create(description: "Draft Ruby pattern")
+    actual = @tasks_repo.show(2)
+    expected = [{:id => 2, :description => "Draft Ruby pattern", :completed => false}]
+    expect(actual).to eq(expected)
+  end
 end

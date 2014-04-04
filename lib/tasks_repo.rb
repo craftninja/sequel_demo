@@ -20,4 +20,8 @@ class TasksRepo
   def remove(id)
     @all_tasks.where(:id => id).delete
   end
+
+  def show(id)
+    [@all_tasks.to_a[id-1]]
+  end
 end
